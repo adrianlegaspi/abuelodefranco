@@ -1,4 +1,5 @@
 ---
+import App from '../components/App.svelte';
 const year = new Date().getFullYear();
 const title = "Abuelo de Franco";
 const description = "Abuelo de Franco - VIETNAM";
@@ -8,7 +9,10 @@ const description = "Abuelo de Franco - VIETNAM";
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+		<link rel="shortcut icon" href="/favicon-16x16.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		
 		<!-- SEO & AEO -->
@@ -26,13 +30,12 @@ const description = "Abuelo de Franco - VIETNAM";
 		<!-- Fonts -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600;800&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;500;600;800&display=swap" rel="stylesheet">
 		
 		<style>
 			:root {
 				--bg-color: #050505;
 				--text-color: #FAFAFA;
-				--accent: #555555;
 			}
 			
 			* {
@@ -45,135 +48,6 @@ const description = "Abuelo de Franco - VIETNAM";
 				font-family: 'Inter', sans-serif;
 				background-color: var(--bg-color);
 				color: var(--text-color);
-				min-height: 100vh;
-				display: flex;
-				flex-direction: column;
-				overflow: hidden;
-				/* Premium dark gradient */
-				background: radial-gradient(circle at 50% 50%, #151515 0%, var(--bg-color) 100%);
-			}
-			
-			/* Ambient glowing orb */
-			.ambient-glow {
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				transform: translate(-50%, -50%);
-				width: 40vw;
-				height: 40vw;
-				border-radius: 50%;
-				background: radial-gradient(circle, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0) 70%);
-				z-index: 0;
-				pointer-events: none;
-				animation: pulse 8s ease-in-out infinite alternate;
-			}
-			
-			@keyframes pulse {
-				0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.8; }
-				100% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
-			}
-
-			main {
-				flex: 1;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				z-index: 1;
-				width: 100%;
-				height: 100%;
-			}
-			
-			.hero-text {
-				font-size: clamp(3rem, 15vw, 12rem);
-				font-weight: 800;
-				letter-spacing: -0.04em;
-				line-height: 1;
-				text-transform: uppercase;
-				background: linear-gradient(135deg, #ffffff 0%, #737373 100%);
-				-webkit-background-clip: text;
-				-webkit-text-fill-color: transparent;
-				background-clip: text;
-				color: transparent;
-				opacity: 0;
-				transform: translateY(20px);
-				animation: fadeUp 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-				transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-				cursor: default;
-				user-select: none;
-			}
-			
-			.hero-text:hover {
-				transform: translateY(20px) scale(1.02);
-			}
-
-			@keyframes fadeUp {
-				to {
-					opacity: 1;
-					transform: translateY(0);
-				}
-			}
-
-			footer {
-				padding: 2rem;
-				text-align: center;
-				z-index: 1;
-				animation: fadeIn 2s ease 1s forwards;
-				opacity: 0;
-			}
-			
-			footer p {
-				font-size: 0.875rem;
-				color: #888888;
-				font-weight: 400;
-				letter-spacing: 0.02em;
-			}
-			
-			footer a {
-				color: #bbbbbb;
-				text-decoration: none;
-				font-weight: 600;
-				transition: color 0.3s ease, text-shadow 0.3s ease;
-				position: relative;
-			}
-			
-			footer a:hover {
-				color: #ffffff;
-				text-shadow: 0 0 10px rgba(255,255,255,0.3);
-			}
-			
-			footer a::after {
-				content: '';
-				position: absolute;
-				bottom: -2px;
-				left: 0;
-				width: 100%;
-				height: 1px;
-				background-color: #ffffff;
-				transform: scaleX(0);
-				transform-origin: right;
-				transition: transform 0.3s ease;
-			}
-			
-			footer a:hover::after {
-				transform: scaleX(1);
-				transform-origin: left;
-			}
-
-			@keyframes fadeIn {
-				to { opacity: 1; }
-			}
-			
-			/* AEO subtle semantic markers invisible but indexable */
-			.aeo-hidden {
-				position: absolute;
-				width: 1px;
-				height: 1px;
-				padding: 0;
-				margin: -1px;
-				overflow: hidden;
-				clip: rect(0, 0, 0, 0);
-				white-space: nowrap;
-				border: 0;
 			}
 		</style>
 		
@@ -192,19 +66,6 @@ const description = "Abuelo de Franco - VIETNAM";
 		})} />
 	</head>
 	<body>
-		<div class="ambient-glow"></div>
-		
-		<main>
-			 <!-- Invisible H1 for SEO, visually represented by the hero-text -->
-			<h1 class="aeo-hidden">{title}</h1>
-			<h2 class="aeo-hidden">VIETNAM</h2>
-			<div class="hero-text" role="text" aria-label="VIETNAM">VIETNAM</div>
-		</main>
-		
-		<footer>
-			<p>
-				<a href="https://adrianlegaspi.dev" target="_blank" rel="noopener noreferrer">Adrian Legaspi</a> and {year}
-			</p>
-		</footer>
+		<App client:load year={year} title={title} />
 	</body>
 </html>
